@@ -162,11 +162,34 @@ python index.py --skip-enrich
 python index.py --skip-enrich
 ```
 
+### Verificar GPU (OBRIGATÓRIO antes de indexar)
+```bash
+python -c "
+from sentence_transformers import SentenceTransformer
+import torch
+print('CUDA:', torch.cuda.is_available())
+print('Device:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU')
+model = SentenceTransformer('intfloat/multilingual-e5-base')
+print('Modelo device:', model.device)  # DEVE ser cuda:0
+"
+```
+
+**Saída esperada:**
+```
+CUDA: True
+Device: NVIDIA GeForce RTX 5070 Ti
+Modelo device: cuda:0
+```
+
+⚠️ Se `Modelo device: cpu`, reinstale PyTorch: `pip install --pre torch --force-reinstall --index-url https://download.pytorch.org/whl/nightly/cu128`
+
 ### Performance
 | Device | 20k chunks | Notas |
 |--------|------------|-------|
 | RTX 5070 Ti (GPU) | ~2 min | cu128 obrigatório |
 | CPU | ~30 min | Fallback universal |
+
+**Nota:** A velocidade aparente (~10-30 batches/s) é limitada pelo ChromaDB (inserção), não pelos embeddings. Os embeddings GPU rodam a ~500+ textos/s.
 
 ---
 

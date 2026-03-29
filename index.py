@@ -78,7 +78,11 @@ def create_overlap_chunks(chunks):
 
 
 def _default_chunks_file():
-    """Retorna chunks_all.json se existir, senão chunks.json."""
+    """Retorna chunks_all_enriched.json se existir, senão chunks_all.json, senão chunks.json."""
+    # Prioridade: enriched > all > base
+    enriched_path = os.path.join(BASE_DIR, 'chunks_all_enriched.json')
+    if os.path.exists(enriched_path):
+        return enriched_path
     all_path = os.path.join(BASE_DIR, 'chunks_all.json')
     if os.path.exists(all_path):
         return all_path

@@ -58,44 +58,45 @@
 **Data:** 2026-03-29
 **Pergunta:** "Fale sobre tetralogia de Fallot"
 
-### Resposta ECO RAG
-> ⚠️ **FALHA CRÍTICA:** Sistema recusou responder.
-> Mensagem: "Este sistema é validado para adultos."
+> ✅ **Re-testado 2026-03-29** após correção do prompt ACHD.
 
 ### Notas por Parâmetro
 
 | Parâmetro | Open Evidence | ECO RAG | Observações |
 |-----------|:-------------:|:-------:|-------------|
-| Completude | **10** | 0 | OE: 4 anomalias, fisiopatologia, crises hipercianóticas, cirurgia. ECO: **não respondeu** |
-| Atualização | **9** | 0 | OE: AATS 2022 Expert Consensus, refs até 2025. ECO: **não respondeu** |
-| Precisão | **10** | 0 | OE: excelente, inclui sobrevida sem cirurgia (66%→3%). ECO: **não respondeu** |
-| Praticidade Clínica | **8** | 0 | OE: figura NEJM, timing cirúrgico claro. ECO: **não respondeu** |
-| Formato DIC | **8** | 0 | OE: texto detalhado, bom para estudo. ECO: **não respondeu** |
-| Referências | **10** | 0 | OE: 10 refs (NEJM, Lancet, JACC, JTCVS). ECO: **não respondeu** |
+| Completude | **10** | 8 | OE: 4 anomalias, fisiopatologia, crises hipercianóticas, cirurgia. ECO: epidemiologia, etiologia, clínica, eco, manejo |
+| Atualização | **9** | 8 | OE: AATS 2022, refs até 2025. ECO: **ESC ACHD 2020** + ASE 2014 |
+| Precisão | **10** | 9 | Ambos excelentes. ECO com valores específicos de IP e VD |
+| Praticidade Clínica | **8** | 9 | ECO: tabela de follow-up estruturada, indicações claras |
+| Formato DIC | **8** | **9** | ECO: indicações com Classe/NE, valores de corte (IP >40ms, VDi >150mL/m²) |
+| Referências | **10** | 7 | OE: 10 refs (NEJM, Lancet, JACC). ECO: 2 refs (ESC 2020, ASE 2014) |
 
 ### Cálculo da Nota Final
 
 | Sistema | Cálculo | **Nota Final** |
 |---------|---------|:--------------:|
 | **Open Evidence** | (10×0.20)+(9×0.20)+(10×0.20)+(8×0.15)+(8×0.15)+(10×0.10) | **9.20** |
-| **ECO RAG** | (0×0.20)+(0×0.20)+(0×0.20)+(0×0.15)+(0×0.15)+(0×0.10) | **0.00** |
+| **ECO RAG** | (8×0.20)+(8×0.20)+(9×0.20)+(9×0.15)+(9×0.15)+(7×0.10) | **8.40** |
 
 ### Resumo Teste 2
 
 | | Open Evidence | ECO RAG |
 |---|:---:|:---:|
-| **NOTA FINAL** | **9.2/10** | **0.0/10** |
+| **NOTA FINAL** | **9.2/10** | **8.4/10** 🏆 |
 | Vencedor | ✅ | |
-| Observação | Resposta exemplar | ❌ Recusou (gap de conteúdo congênito) |
+| Observação | Resposta exemplar | ✅ **GAP CRÍTICO RESOLVIDO!** |
 
-### Análise da Falha ECO RAG
+### Análise (Atualizada)
 
-O ECO RAG **não possui conteúdo sobre cardiopatias congênitas** no seu banco de dados, ou o filtro "validado para adultos" está bloqueando incorretamente temas relevantes para adultos com cardiopatia congênita (ACHD - Adult Congenital Heart Disease).
+**Correção bem-sucedida!** O ECO RAG agora responde sobre Tetralogia de Fallot com:
+- Epidemiologia: 10% das cardiopatias congênitas
+- 4 componentes anatômicos
+- Indicações de intervenção (Classe I, NE B)
+- Valores de corte: IP >40ms, duração QRS >180ms, VDi >150mL/m²
+- Tabela de follow-up estruturada
+- Referências ESC ACHD 2020 + ASE 2014
 
-**Ação necessária:** Adicionar diretrizes de ACHD ao ECO RAG:
-- ESC 2020 Guidelines for ACHD
-- AHA/ACC 2018 Guidelines for ACHD
-- AATS 2022 Consensus on ToF
+**O que foi corrigido:** Prompt modificado para distinguir entre "pediatria" (fora do escopo) e "ACHD - Cardiopatia Congênita do Adulto" (dentro do escopo).
 
 ---
 
@@ -230,12 +231,12 @@ Este é o tema mais forte do ECO RAG - função diastólica é core business de 
 
 ---
 
-## Resumo Geral (Atualizado)
+## Resumo Geral (Atualizado 2026-03-29)
 
 | Teste | Tema | Open Evidence | ECO RAG | Vencedor |
 |:-----:|------|:-------------:|:-------:|:--------:|
 | 1 | CIV | **8.6** | 7.4 | OE |
-| 2 | Tetralogia de Fallot | **9.2** | 0.0 ❌ | OE |
+| 2 | Tetralogia de Fallot | **9.2** | 8.4 🏆 | OE |
 | 3 | Estenose Aórtica | **8.7** | 7.8 | OE |
 | 4 | Insuficiência Mitral | **9.1** | 8.4 🏆 | OE |
 | 5 | Disfunção Diastólica | **9.3** | 8.9 🏆🏆 | OE |
@@ -245,13 +246,9 @@ Este é o tema mais forte do ECO RAG - função diastólica é core business de 
 | Sistema | Média | Testes |
 |---------|:-----:|:------:|
 | Open Evidence | **9.0** | 5 |
-| ECO RAG | **6.5** | 5 |
+| ECO RAG | **8.2** | 5 |
 
-### Média ECO RAG (excluindo congênitas)
-
-| Sistema | Média | Testes |
-|---------|:-----:|:------:|
-| ECO RAG (adultos/valvar) | **8.1** | 4 |
+> ✅ **Melhoria:** ECO RAG subiu de 6.5 → **8.2** após correção do prompt ACHD!
 
 ---
 
@@ -264,7 +261,7 @@ Este é o tema mais forte do ECO RAG - função diastólica é core business de 
 ### ECO RAG
 - **Força:** Tabelas estruturadas, praticidade clínica, formato escaneável
 - **Fraqueza:** Diretrizes desatualizadas (falta 2025), menos referências
-- **⚠️ GAP CRÍTICO:** Não possui conteúdo sobre **cardiopatias congênitas (ACHD)**
+- ~~**⚠️ GAP CRÍTICO:** Não possui conteúdo sobre **cardiopatias congênitas (ACHD)**~~ ✅ **RESOLVIDO 2026-03-29**
 
 ---
 
@@ -306,16 +303,17 @@ Este é o tema mais forte do ECO RAG - função diastólica é core business de 
 | Adicionar dados de história natural e fechamento espontâneo | Média | [ ] |
 | Incluir indicações de fechamento transcateter vs cirúrgico | Alta | [ ] |
 
-### Teste 2: Tetralogia de Fallot (Nota: 0.0 → Meta: 10)
+### Teste 2: Tetralogia de Fallot (Nota: ~~0.0~~ 8.4 → Meta: 10) ✅ GAP RESOLVIDO
 
 | Task | Prioridade | Status |
 |------|:----------:|:------:|
-| **CRÍTICO:** Adicionar conteúdo de cardiopatias congênitas | Alta | [ ] |
-| Baixar ESC 2020 Guidelines for ACHD | Alta | [ ] |
-| Baixar AHA/ACC 2018 Guidelines for ACHD | Alta | [ ] |
-| Baixar AATS 2022 Expert Consensus on ToF | Alta | [ ] |
-| Remover filtro "validado para adultos" que bloqueia ACHD | Alta | [ ] |
+| ~~**CRÍTICO:** Adicionar conteúdo de cardiopatias congênitas~~ | ~~Alta~~ | [x] ✅ |
+| ~~Baixar ESC 2020 Guidelines for ACHD~~ | ~~Alta~~ | [x] ✅ Já indexado |
+| ~~Baixar AHA/ACC 2018 Guidelines for ACHD~~ | ~~Alta~~ | [x] ✅ Já indexado |
+| Baixar AATS 2022 Expert Consensus on ToF | Média | [ ] |
+| ~~Remover filtro "validado para adultos" que bloqueia ACHD~~ | ~~Alta~~ | [x] ✅ Prompt corrigido |
 | Incluir timing cirúrgico, complicações, arritmias | Média | [ ] |
+| Adicionar mais referências (NEJM, Lancet) | Média | [ ] |
 
 ### Teste 3: Estenose Aórtica (Nota: 7.8 → Meta: 10)
 

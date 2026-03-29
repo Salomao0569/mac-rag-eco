@@ -4,19 +4,19 @@ Pipeline completo para adicionar novas diretrizes ao MAC RAG Eco.
 
 ---
 
-## ⚠️ Pendências Críticas do Benchmark
+## ✅ Status do Benchmark (Atualizado 2026-03-29)
 
-> Atualizado: 2026-03-29 | Ref: [docs/BENCHMARK-OPEN-EVIDENCE-VS-ECO-RAG.md](docs/BENCHMARK-OPEN-EVIDENCE-VS-ECO-RAG.md)
+> Ref: [docs/BENCHMARK-OPEN-EVIDENCE-VS-ECO-RAG.md](docs/BENCHMARK-OPEN-EVIDENCE-VS-ECO-RAG.md)
 
-| Prioridade | Diretriz | Impacto |
-|:----------:|----------|---------|
-| **CRÍTICA** | ESC ACHD 2020 | ECO RAG = 0 em ToF |
-| **CRÍTICA** | AHA/ACC ACHD 2018 | ECO RAG = 0 em ToF |
-| **CRÍTICA** | ACC/AHA ACHD 2025 | CIV nota 7.4 → meta 10 |
-| Alta | ESC/EACTS VHD 2021 | EA nota 7.8 → meta 10 |
-| Alta | ACC/AHA VHD 2020 | EA nota 7.8 → meta 10 |
+| Prioridade | Diretriz | Impacto | Status |
+|:----------:|----------|---------|:------:|
+| ~~**CRÍTICA**~~ | ESC ACHD 2020 | ~~ECO RAG = 0 em ToF~~ | ✅ Resolvido |
+| ~~**CRÍTICA**~~ | AHA/ACC ACHD 2018 | ~~ECO RAG = 0 em ToF~~ | ✅ Resolvido |
+| Alta | ACC/AHA ACHD 2025 | CIV nota 7.4 → meta 10 | Pendente |
+| Alta | ESC/EACTS VHD 2021 | EA nota 7.8 → meta 10 | Pendente |
+| Alta | ACC/AHA VHD 2020 | EA nota 7.8 → meta 10 | Pendente |
 
-**Status Benchmark:** OE 9.0 vs ECO RAG 6.5 (5 testes)
+**Status Benchmark:** OE 9.0 vs ECO RAG **8.2** (5 testes) ✅ Melhoria de 6.5 → 8.2
 
 ---
 
@@ -250,15 +250,17 @@ python index.py --skip-enrich
 > Identificadas durante benchmark Open Evidence vs ECO RAG (2026-03-29)
 > Ref: [docs/BENCHMARK-OPEN-EVIDENCE-VS-ECO-RAG.md](docs/BENCHMARK-OPEN-EVIDENCE-VS-ECO-RAG.md)
 
-#### Cardiopatias Congênitas (ACHD) - GAP CRÍTICO
-| Diretriz | Fonte | Ano | Teste | Prioridade |
-|----------|-------|:---:|-------|:----------:|
-| Guidelines for the Management of Adults With Congenital Heart Disease | ESC | 2020 | Teste 2 (ToF) | **CRÍTICA** |
-| Guidelines for the Management of Adults With Congenital Heart Disease | AHA/ACC | 2018 | Teste 2 (ToF) | **CRÍTICA** |
-| Expert Consensus: Management of Infants and Neonates With Tetralogy of Fallot | AATS | 2022 | Teste 2 (ToF) | **CRÍTICA** |
-| 2025 ACC/AHA/HRS/ISACHD/SCAI Guideline for ACHD | ACC/AHA | 2025 | Teste 1 (CIV) | **CRÍTICA** |
+#### Cardiopatias Congênitas (ACHD) - ✅ GAP RESOLVIDO (2026-03-29)
 
-⚠️ **ECO RAG = 0 em Tetralogia de Fallot** - Sistema recusou responder sobre cardiopatias congênitas.
+> **Correção aplicada:** Prompt modificado para distinguir "pediatria" (fora do escopo) de "ACHD" (dentro do escopo).
+> **Resultado:** ECO RAG agora responde sobre Tetralogia de Fallot com nota 8.4/10.
+
+| Diretriz | Fonte | Ano | Teste | Status |
+|----------|-------|:---:|-------|:------:|
+| Guidelines for the Management of Adults With Congenital Heart Disease | ESC | 2020 | Teste 2 (ToF) | ✅ Indexado |
+| Guidelines for the Management of Adults With Congenital Heart Disease | AHA/ACC | 2018 | Teste 2 (ToF) | ✅ Indexado |
+| Expert Consensus: Management of Infants and Neonates With Tetralogy of Fallot | AATS | 2022 | Teste 2 (ToF) | Pendente |
+| 2025 ACC/AHA/HRS/ISACHD/SCAI Guideline for ACHD | ACC/AHA | 2025 | Teste 1 (CIV) | Pendente |
 
 #### Valvopatias - Atualização Necessária
 | Diretriz | Fonte | Ano | Teste | Prioridade |

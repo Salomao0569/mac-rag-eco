@@ -1,0 +1,13 @@
+agno==2.5.10
+chromadb==1.4.1
+streamlit==1.40.1
+requests==2.32.3
+beautifulsoup4==4.14.3
+pymupdf==1.27.2.2
+pydantic==2.12.5
+anthropic==0.86.0
+openai==2.21.0
+biopython==1.86
+flashrank>=0.2.0
+bm25s>=0.2.0
+pytest>=8.0

@@ -1,0 +1,27 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Data (large / regenerable)
+chroma_db/
+agent_memory.db
+chunks.json
+chunks_all.json
+chunks_international.json
+
+# Guidelines (source files, not code)
+guidelines_html/
+guidelines_pdf/
+
+# Logs
+logs/
+
+# OS
+.DS_Store
